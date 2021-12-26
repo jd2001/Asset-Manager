@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_144218) do
+ActiveRecord::Schema.define(version: 2021_12_26_144839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 2021_12_26_144218) do
     t.datetime "updated_at", null: false
     t.bigint "host_type_id"
     t.bigint "admin_id"
+    t.bigint "priority_id"
     t.index ["admin_id"], name: "index_applications_on_admin_id"
     t.index ["host_type_id"], name: "index_applications_on_host_type_id"
     t.index ["info_type_id"], name: "index_applications_on_info_type_id"
+    t.index ["priority_id"], name: "index_applications_on_priority_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -66,6 +68,12 @@ ActiveRecord::Schema.define(version: 2021_12_26_144218) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "priorities", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -81,5 +89,6 @@ ActiveRecord::Schema.define(version: 2021_12_26_144218) do
   add_foreign_key "applications", "admins"
   add_foreign_key "applications", "host_types"
   add_foreign_key "applications", "info_types"
+  add_foreign_key "applications", "priorities"
   add_foreign_key "employees", "companies"
 end
