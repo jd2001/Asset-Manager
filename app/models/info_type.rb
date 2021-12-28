@@ -1,3 +1,3 @@
 class InfoType < ApplicationRecord
-  has_many :applications
+  has_many :assets
 end
