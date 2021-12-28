@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_144822) do
+ActiveRecord::Schema.define(version: 2021_12_28_150207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accesses", force: :cascade do |t|
+    t.datetime "date_added"
+    t.datetime "date_removed"
+    t.bigint "asset_id", null: false
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asset_id"], name: "index_accesses_on_asset_id"
+    t.index ["employee_id"], name: "index_accesses_on_employee_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -86,6 +97,8 @@ ActiveRecord::Schema.define(version: 2021_12_28_144822) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accesses", "assets"
+  add_foreign_key "accesses", "employees"
   add_foreign_key "assets", "admins"
   add_foreign_key "assets", "host_types"
   add_foreign_key "assets", "info_types"
