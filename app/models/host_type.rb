@@ -1,3 +1,3 @@
 class HostType < ApplicationRecord
-  has_many :assets
+  has_many :business_assets
 end

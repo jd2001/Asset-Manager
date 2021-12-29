@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root 'asset#index'
+  root 'business_assets#index'
 
-  resource :assets
+  resources :business_assets
+  resources :host_types
 
   devise_for :users
 end

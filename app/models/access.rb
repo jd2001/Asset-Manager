@@ -1,4 +1,4 @@
 class Access < ApplicationRecord
-  belongs_to :asset
+  belongs_to :business_asset
   belongs_to :employee
 end

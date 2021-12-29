@@ -1,4 +1,4 @@
-class Asset < ApplicationRecord
+class BusinessAsset < ApplicationRecord
   belongs_to :admin
   belongs_to :host_type
   belongs_to :info_type
