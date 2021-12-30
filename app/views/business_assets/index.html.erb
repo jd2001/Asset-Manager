@@ -1,3 +1,8 @@
-<% @business_assets.each do |business_asset| %>
-  <p> <%= business_asset.name %> </p>
-<% end %>
+<div class="container mx-auto">
+  <% @business_assets.each do |business_asset| %>
+    <p> <%= business_asset.name %> </p>
+  <% end %>
+</div>
+<button class="bg-indigo-500">
+  Save changes
+</button>
