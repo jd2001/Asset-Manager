@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :business_assets
   resources :host_types
   resources :info_types
+  resources :admins
+  resources :priorities
 
   devise_for :users
 end
