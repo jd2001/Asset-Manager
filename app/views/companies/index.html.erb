@@ -1,0 +1,6 @@
+<% @companies.each do |company| %>
+  <h3> <%= company.name %> </h3>
+  <% company.employees.each do |employee| %>
+    <p> <%= employee.first_name %> </p>
+  <% end %>
+<% end %>
