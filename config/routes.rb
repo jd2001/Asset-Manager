@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :business_assets
   resources :host_types
+  resources :info_types
 
   devise_for :users
 end
