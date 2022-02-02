@@ -15,5 +15,7 @@
   <%= f.collection_select :info_type_id, InfoType.all, :id, :name %> <br>
   <%= f.label :priority_id, "Priority:" %>
   <%= f.collection_select :priority_id, Priority.all, :id, :description %> <br>
+  <%= f.label :employee_ids, "Employees" %>
+  <%= f.collection_select :employee_ids, Employee.all, :id, :first_name, {}, { multiple: true } %>
   <%= f.submit %>
 <% end %>

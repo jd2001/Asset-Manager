@@ -4,13 +4,17 @@ class BusinessAssetsController < ApplicationController
     @business_asset = BusinessAsset.new
   end
 
+  def show
+    @business_asset = BusinessAsset.find(params[:id])
+    @asset_employees = @business_asset.employees
+  end
+
   def edit
     @business_asset = BusinessAsset.find(params[:id])
   end
 
   def update
     @business_asset = BusinessAsset.find(params[:id])
-    # binding.pry
     if @business_asset.update(business_asset_params)
       redirect_to :root
     else
