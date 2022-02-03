@@ -1,3 +1,16 @@
+<h1><%= @business_asset.name %></h1>
+
 <% @asset_employees.each do |asset_employee| %>
   <p> <%= asset_employee.first_name %> </p>
+<% end %>
+
+<br>
+
+<% if !@other_employees.empty? %>
+  <%= form_for(Access.new) do |f| %>
+    <%= f.label :employee_id, "Employee:" %>
+    <%= f.collection_select :employee_id, @other_employees, :id, :first_name %>
+    <%= f.hidden_field :business_asset_id, value: @business_asset.id %>
+    <%= f.submit %>
+  <% end %>
 <% end %>

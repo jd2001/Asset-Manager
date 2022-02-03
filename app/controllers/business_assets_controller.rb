@@ -7,6 +7,7 @@ class BusinessAssetsController < ApplicationController
   def show
     @business_asset = BusinessAsset.find(params[:id])
     @asset_employees = @business_asset.employees
+    @other_employees = Employee.all - @asset_employees
   end
 
   def edit

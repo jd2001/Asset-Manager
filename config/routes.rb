@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'business_assets#index'
 
+  resources :accesses
   resources :admins
   resources :business_assets
   resources :companies
