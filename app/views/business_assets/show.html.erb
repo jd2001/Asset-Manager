@@ -1,7 +1,7 @@
 <h1><%= @business_asset.name %></h1>
 
 <% @asset_employees.each do |asset_employee| %>
-  <p> <%= asset_employee.first_name %> </p>
+  <p> <%= asset_employee.first_name %> <%= link_to("Destroy", access_path(access(asset_employee, @business_asset)), method: :delete) %> </p>
 <% end %>
 
 <br>

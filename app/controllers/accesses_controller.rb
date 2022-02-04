@@ -9,6 +9,12 @@ class AccessesController < ApplicationController
     end
   end
 
+  def destroy
+    @access = Access.find(params[:id])
+    @access.destroy
+    redirect_back(fallback_location: root_path) and return
+  end
+
   private
 
   def access_params
