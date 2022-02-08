@@ -1,0 +1,18 @@
+<a href="<%= new_host_type_path %>">New Host Type</a>
+<% @host_types.each do |host_type| %>
+  <p> <%= host_type.description %> <%= link_to("Destroy", host_type_path(host_type), method: :delete) %> </p>
+<% end %>
+
+<br>
+
+<a href="<%= new_info_type_path %>">New Info Type</a>
+<% @info_types.each do |info_type| %>
+  <p> <%= info_type.name %> <%= link_to("Destroy", info_type_path(info_type), method: :delete) %> </p>
+<% end %>
+
+<br>
+
+<a href="<%= new_priority_path %>">New Priority</a>
+<% @priorities.each do |priority| %>
+  <p> <%= priority.description %> <%= link_to("Destroy", priority_path(priority), method: :delete) %> </p>
+<% end %>

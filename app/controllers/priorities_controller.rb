@@ -17,6 +17,16 @@ class PrioritiesController < ApplicationController
     @priorities = Priority.all
   end
 
+  def destroy
+    @priority = Priority.find(params[:id])
+    if !@priority.business_assets.any?
+      @priority.destroy
+      redirect_back(fallback_location: root_path) and return
+    else
+      redirect_back(fallback_location: root_path, notice: "error: record has children") and return
+    end
+  end
+
   private
 
   def priority_params

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'business_assets#index'
 
+  get 'home', to: "home#home"
+
   resources :accesses
   resources :admins
   resources :business_assets

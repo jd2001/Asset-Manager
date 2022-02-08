@@ -17,6 +17,16 @@ class InfoTypesController < ApplicationController
     @info_types = InfoType.all
   end
 
+  def destroy
+    @info_type = InfoType.find(params[:id])
+    if !@info_type.business_assets.any?
+      @info_type.destroy
+      redirect_back(fallback_location: root_path) and return
+    else
+      redirect_back(fallback_location: root_path, notice: "error: record has children") and return
+    end
+  end
+
   private
 
   def info_type_params
