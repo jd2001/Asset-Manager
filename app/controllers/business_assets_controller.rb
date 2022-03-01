@@ -39,6 +39,6 @@ class BusinessAssetsController < ApplicationController
   private
 
   def business_asset_params
-    params.require(:business_asset).permit(:business_asset_code, :cost, :cost_type, :name, :admin_id, :host_type_id, :info_type_id, :priority_id)
+    params.require(:business_asset).permit(:asset_code, :cost, :cost_type, :name, :admin_id, :host_type_id, :info_type_id, :priority_id)
   end
 end

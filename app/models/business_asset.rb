@@ -1,5 +1,5 @@
 class BusinessAsset < ApplicationRecord
-  belongs_to :admin
+  belongs_to :admin, optional: true
   belongs_to :host_type
   belongs_to :info_type
   belongs_to :priority
