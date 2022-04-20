@@ -1,21 +1,152 @@
-<%= form_for @business_asset do |f| %>
-  <%= f.label :name, "Name:" %>
-  <%= f.text_field :name %> <br>
-  <%= f.label :asset_code, "Asset Code:" %>
-  <%= f.text_field :asset_code %> <br>
-  <%= f.label :cost, "Cost:" %>
-  <%= f.number_field :cost %> <br>
-  <%= f.label :cost_type, "Cost Type:" %>
-  <%= f.select :cost_type, ["Monthly", "Yearly"] %> <br>
-  <%= f.label :admin, "Admin:" %>
-  <%= f.collection_select :admin_id, Admin.all, :id, :name %> <br>
-  <%= f.label :host_type_id, "Host Type:" %>
-  <%= f.collection_select :host_type_id, HostType.all, :id, :description %> <br>
-  <%= f.label :info_type_id, "Info Type:" %>
-  <%= f.collection_select :info_type_id, InfoType.all, :id, :name %> <br>
-  <%= f.label :priority_id, "Priority:" %>
-  <%= f.collection_select :priority_id, Priority.all, :id, :description %> <br>
-  <%= f.label :employee_ids, "Employees" %>
-  <%= f.collection_select :employee_ids, Employee.all, :id, :first_name, {}, { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<div class="flex h-screen">
+  <%= render "shared/navbar" %>
+  <div class="content p-8 flex-1 flex flex-col justify-between items-stretch bg-slate-200">
+    <div class="flex flex-1 flex-col justify-between items-stretch">
+      <div class="relative bg-white rounded-xl shadow-xl mb-8 ">
+        <%= form_for @business_asset do |f| %>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :name, 'Name' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.text_field :name,
+                  placeholder: 'Name',
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300 w-full"
+                %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :asset_code, 'Asset Code' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.text_field :asset_code,
+                  placeholder: 'Asset Code',
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300 w-full"
+                %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :cost, 'Cost' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.number_field :cost,
+                  placeholder: 'Cost',
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300 w-full"
+                %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :cost_type, 'Cost Type' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.select :cost_type, ["Monthly", "Yearly"],
+                  {},
+                  {
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                  }
+                 %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :admin, 'Admin' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.collection_select :admin_id, Admin.all, :id, :name,
+                  {},
+                  {
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                  }
+                 %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :host_type, 'Host Type' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.collection_select :host_type_id, HostType.all, :id, :description,
+                  {},
+                  {
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                  }
+                 %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :info_type, 'Info Type' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.collection_select :info_type_id, InfoType.all, :id, :name,
+                  {},
+                  {
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                  }
+                 %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <div class="h-16 flex self-start items-center text-slate-600">
+              <div class=" md:w-64  w-48 px-8 flex">
+                <%= f.label :priority, 'Priority' %>
+              </div>
+            </div>
+            <div class="flex-1 flex flex-row min-h-inherit">
+              <div class="px-6 py-3 self-center  w-8/12 ">
+                <%=
+                  f.collection_select :priority_id, Priority.all, :id, :description,
+                  {},
+                  {
+                  class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                  }
+                 %>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center p-2 leading-tight  border-b min-h-12">
+            <%= f.submit("Submit", class: "inline-flex flex-grow-0 items-center text-sm font-bold leading-none fill-current whitespace-nowrap transition duration-100 rounded-lg shadow-xl transform transition duration-100 active:translate-x-px active:translate-y-px cursor-pointer disabled:cursor-not-allowed  bg-white border hover:border-green-700 border-green-600 text-green-600 hover:text-green-700 disabled:border-gray-300 disabled:text-gray-600 p-4") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

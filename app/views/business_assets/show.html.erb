@@ -1,4 +1,62 @@
-<h1><%= @business_asset.name %></h1>
+<div class="flex h-screen">
+  <%= render "shared/navbar" %>
+  <div class="content p-8 flex-1 flex flex-col justify-between items-stretch bg-slate-200">
+    <div class="flex flex-1 flex-col items-stretch">
+      <div class="relative bg-white rounded-lg shadow-lg p-5">
+        <h1 class="text-xl text-slate-600">
+          <%= link_to @business_asset.name, edit_business_asset_path(@business_asset) %> 
+        </h1>
+      </div>
+      <br>
+      <div class="relative bg-white rounded-lg shadow-lg p-5">
+        <h1 class="text-xl text-slate-600">
+          <% if !@other_employees.empty? %>
+            <%= form_for(Access.new) do |f| %>
+              <%= f.collection_select :employee_id, @other_employees, :id, :first_name,
+                {},
+                {
+                class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                }
+              %>
+              <%= f.hidden_field :business_asset_id, value: @business_asset.id %>
+              <%= f.submit("Add employee", class: "inline-flex flex-grow-0 items-center text-sm font-bold leading-none fill-current whitespace-nowrap transition duration-100 rounded-lg shadow-xl transform transition duration-100 active:translate-x-px active:translate-y-px cursor-pointer disabled:cursor-not-allowed  bg-white border hover:border-green-700 border-green-600 text-green-600 hover:text-green-700 disabled:border-gray-300 disabled:text-gray-600 p-4") %>
+            <% end %>
+          <% end %>
+        </h1>
+      </div>
+      <br>
+      <div class="relative bg-white rounded-md shadow-lg p-5">
+        <div class="w-full overflow-auto flex flex-col mt-0">
+          <div class="relative flex-1 flex">
+            <div class="w-full">
+              <table class="w-full px-4 bg-white rounded">
+                <thead class="bg-white border-b border-gray-200 pb-1">
+                  <tr>
+                    <th class="text-left uppercase text-slate-600 px-3 py-4 whitespace-nowrap rounded-l"> Employees </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y">
+                  <% @asset_employees.each do |asset_employee| %>
+                    <tr class="bg-white hover:bg-blue-50 hover:shadow-row hover:z-[21] relative z-20 border-b">
+                      <td class="min-h-[3rem] px-3 leading-tight whitespace-nowrap h-full text-slate-800  py-3">
+                        <%= asset_employee.first_name %>
+                      </td>
+                      <td class="text-right whitespace-nowrap px-2">
+                        <%= link_to("Destroy", access_path(access(asset_employee, @business_asset)), method: :delete) %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <% @asset_employees.each do |asset_employee| %>
   <p> <%= asset_employee.first_name %> <%= link_to("Destroy", access_path(access(asset_employee, @business_asset)), method: :delete) %> </p>
