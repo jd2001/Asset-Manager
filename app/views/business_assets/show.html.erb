@@ -4,13 +4,13 @@
     <div class="flex flex-1 flex-col items-stretch">
       <div class="relative bg-white rounded-lg shadow-lg p-5">
         <h1 class="text-xl text-slate-600">
-          <%= link_to @business_asset.name, edit_business_asset_path(@business_asset) %> 
+          <%= link_to @business_asset.name, edit_business_asset_path(@business_asset) %>
         </h1>
       </div>
-      <br>
-      <div class="relative bg-white rounded-lg shadow-lg p-5">
-        <h1 class="text-xl text-slate-600">
-          <% if !@other_employees.empty? %>
+      <% if !@other_employees.empty? %>
+        <br>
+        <div class="relative bg-white rounded-lg shadow-lg p-5">
+          <h1 class="text-xl text-slate-600">
             <%= form_for(Access.new) do |f| %>
               <%= f.collection_select :employee_id, @other_employees, :id, :first_name,
                 {},
@@ -21,9 +21,9 @@
               <%= f.hidden_field :business_asset_id, value: @business_asset.id %>
               <%= f.submit("Add employee", class: "inline-flex flex-grow-0 items-center text-sm font-bold leading-none fill-current whitespace-nowrap transition duration-100 rounded-lg shadow-xl transform transition duration-100 active:translate-x-px active:translate-y-px cursor-pointer disabled:cursor-not-allowed  bg-white border hover:border-green-700 border-green-600 text-green-600 hover:text-green-700 disabled:border-gray-300 disabled:text-gray-600 p-4") %>
             <% end %>
-          <% end %>
-        </h1>
-      </div>
+          </h1>
+        </div>
+      <% end %>
       <br>
       <div class="relative bg-white rounded-md shadow-lg p-5">
         <div class="w-full overflow-auto flex flex-col mt-0">

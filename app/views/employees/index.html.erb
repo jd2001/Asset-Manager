@@ -1,3 +1,12 @@
-<% @employees.each do |employee| %>
-  <p> <%= employee.first_name %> </p>
-<% end %>
+<div class="flex h-screen">
+    <%= render partial: "shared/navbar", locals: {current_page: 'employee_index'} %>
+  <div class="bg-slate-200 w-5/6 p-5">
+    <div class="grid gap-2 xl:grid-cols-5 md:grid-cols-3 grid-cols-1">
+      <% @employees.each do |employee| %>
+        <div class="p-4 rounded-xl shadow-lg bg-white">
+          <a href="#" class="text-lg text-slate-500 pb-2 hover:text-slate-400"> <%= employee.full_name %> </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

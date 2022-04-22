@@ -1,8 +1,15 @@
 <% current_page ||= '' %>
 
-<div class="bg-white w-1/8 border-r-2 border-slate-300">
+<div class="bg-white w-1/6 border-r-2 border-slate-300">
   <h1 class="flex w-full text-3xl font-serif italic text-gray-500 justify-center py-2 px-4"> Asset Manager </h1>
   <h2 class="flex w-full pt-7 pb-2 pl-7 font-semibold text-sm text-gray-500"> Resources </h2>
+  <p class="flex pb-2 px-4">
+    <% if current_page == 'home_page' %>
+      <a href='#' class='btn rounded-md disabled w-full px-3 py-1 font-semibold text-sm text-gray-600 bg-gray-100'>Home</a>
+    <% else %>
+      <%= link_to "Home", home_path, class: 'btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100' %>
+    <% end %>
+  </p>
   <p class="flex pb-2 px-4">
     <% if current_page == 'asset_index' %>
       <a href='#' class='btn rounded-md disabled w-full px-3 py-1 font-semibold text-sm text-gray-600 bg-gray-100'>Assets</a>
@@ -11,15 +18,17 @@
     <% end %>
   </p>
   <p class="flex pb-2 px-4">
-    <a href='#' class='btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100'>Companies</a>
+    <% if current_page == 'company_index' %>
+      <a href='#' class='btn rounded-md disabled w-full px-3 py-1 font-semibold text-sm text-gray-600 bg-gray-100'>Companies</a>
+    <% else %>
+      <%= link_to "Companies", companies_path, class: 'btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100' %>
+    <% end %>
   </p>
   <p class="flex pb-2 px-4">
-    <a href='#' class='btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100'>Employees</a>
-  </p>
-  <p class="flex pb-2 px-4">
-    <a href='#' class='btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100'>Host Types</a>
-  </p>
-  <p class="flex pb-2 px-4">
-    <a href='#' class='btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100'>Info Types</a>
+    <% if current_page == 'employee_index' %>
+      <a href='#' class='btn rounded-md disabled w-full px-3 py-1 font-semibold text-sm text-gray-600 bg-gray-100'>Employees</a>
+    <% else %>
+      <%= link_to "Employees", employees_path, class: 'btn rounded-md w-full px-3 py-1 font-normal text-sm text-gray-600 hover:bg-gray-100' %>
+    <% end %>
   </p>
 </div>
