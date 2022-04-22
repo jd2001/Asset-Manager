@@ -1,23 +1,101 @@
 <div class="flex h-screen">
   <%= render partial: "shared/navbar", locals: {current_page: 'home_page'} %>
   <div class="bg-slate-200 w-5/6 p-5">
-    <a href="<%= new_host_type_path %>">New Host Type</a>
-    <% @host_types.each do |host_type| %>
-      <p> <%= host_type.description %> <%= link_to("Destroy", host_type_path(host_type), method: :delete) %> </p>
-    <% end %>
-
-    <br>
-
-    <a href="<%= new_info_type_path %>">New Info Type</a>
-    <% @info_types.each do |info_type| %>
-      <p> <%= info_type.name %> <%= link_to("Destroy", info_type_path(info_type), method: :delete) %> </p>
-    <% end %>
-
-    <br>
-
-    <a href="<%= new_priority_path %>">New Priority</a>
-    <% @priorities.each do |priority| %>
-      <p> <%= priority.description %> <%= link_to("Destroy", priority_path(priority), method: :delete) %> </p>
-    <% end %>
+    <div class="content p-8 flex-1 flex flex-col justify-between items-stretch bg-slate-200">
+      <div class="flex flex-1 flex-col items-stretch">
+        <div class="relative bg-white rounded-lg shadow-lg p-3">
+          <div class="w-full overflow-auto flex flex-col mt-0">
+            <div class="relative flex-1 flex">
+              <div class="w-full">
+                <table class="w-full bg-white rounded">
+                  <thead class="bg-white border-b border-gray-200">
+                    <tr>
+                      <th class="text-left uppercase text-slate-600 p-3 whitespace-nowrap rounded-l"> Host Types </th>
+                      <th class="text-right p-3 whitespace-nowrap rounded-l">
+                        <%= link_to('+', new_host_type_path, class: "text-slate-600 hover:text-slate-700 px-3 py-2 border rounded-lg hover:bg-gray-100") %>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y">
+                    <% @host_types.each do |host_type| %>
+                      <tr class="bg-white hover:bg-blue-50 hover:shadow-row hover:z-[21] relative z-20 border-b">
+                        <td class="min-h-[3rem] px-3 leading-tight whitespace-nowrap h-full text-slate-800  py-3">
+                          <%= host_type.description %>
+                        </td>
+                        <td class="text-right whitespace-nowrap px-2">
+                          <%= link_to("Destroy", host_type_path(host_type), method: :delete) %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="relative bg-white rounded-lg shadow-lg p-3">
+          <div class="w-full overflow-auto flex flex-col mt-0">
+            <div class="relative flex-1 flex">
+              <div class="w-full">
+                <table class="w-full bg-white rounded">
+                  <thead class="bg-white border-b border-gray-200">
+                    <tr>
+                      <th class="text-left uppercase text-slate-600 p-3 whitespace-nowrap rounded-l"> Info Types </th>
+                      <th class="text-right p-3 whitespace-nowrap rounded-l">
+                        <%= link_to('+', new_info_type_path, class: "text-slate-600 hover:text-slate-700 px-3 py-2 border rounded-lg hover:bg-gray-100") %>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y">
+                    <% @info_types.each do |info_type| %>
+                      <tr class="bg-white hover:bg-blue-50 hover:shadow-row hover:z-[21] relative z-20 border-b">
+                        <td class="min-h-[3rem] px-3 leading-tight whitespace-nowrap h-full text-slate-800  py-3">
+                          <%= info_type.name %>
+                        </td>
+                        <td class="text-right whitespace-nowrap px-2">
+                          <%= link_to("Destroy", info_type_path(info_type), method: :delete) %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="relative bg-white rounded-lg shadow-lg p-3">
+          <div class="w-full overflow-auto flex flex-col mt-0">
+            <div class="relative flex-1 flex">
+              <div class="w-full">
+                <table class="w-full bg-white rounded">
+                  <thead class="bg-white border-b border-gray-200">
+                    <tr>
+                      <th class="text-left uppercase text-slate-600 p-3 whitespace-nowrap rounded-l"> Priority </th>
+                      <th class="text-right p-3 whitespace-nowrap rounded-l">
+                        <%= link_to('+', new_priority_path, class: "text-slate-600 hover:text-slate-700 px-3 py-2 border rounded-lg hover:bg-gray-100") %>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y">
+                    <% @priorities.each do |priority| %>
+                      <tr class="bg-white hover:bg-blue-50 hover:shadow-row hover:z-[21] relative z-20 border-b">
+                        <td class="min-h-[3rem] px-3 leading-tight whitespace-nowrap h-full text-slate-800  py-3">
+                          <%= priority.description %>
+                        </td>
+                        <td class="text-right whitespace-nowrap px-2">
+                          <%= link_to("Destroy", priority_path(priority), method: :delete) %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
