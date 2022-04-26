@@ -13,6 +13,12 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def show
+    @employee = Employee.find(params[:id])
+    @employee_assets = @employee.business_assets
+    @other_assets = BusinessAsset.all - @employee_assets
+  end
+
   def index
     @employees = Employee.all
   end
