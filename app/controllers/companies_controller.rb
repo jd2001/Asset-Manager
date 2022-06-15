@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @employees = @company.employees
   end
 
   def create
@@ -15,6 +16,10 @@ class CompaniesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
+    @company = Company.find(params[:id])
   end
 
   def index

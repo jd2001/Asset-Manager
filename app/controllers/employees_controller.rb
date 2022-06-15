@@ -23,6 +23,17 @@ class EmployeesController < ApplicationController
     @employees = Employee.all
   end
 
+  def destroy
+    @employee = Employee.find(params[:id])
+    company = @employee.company
+    @employee.accesses.destroy_all
+    if @employee.destroy
+      redirect_to company_path(company)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
 
   def employee_params

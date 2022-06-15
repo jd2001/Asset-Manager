@@ -15,12 +15,12 @@
               <%= f.collection_select :employee_id, @other_employees, :id, :first_name,
                 {},
                 {
-                class: "appearance-none inline-flex bg-slate-100 disabled:bg-slate-300 disabled:cursor-not-allowed focus:bg-white text-slate-700 disabled:text-slate-700 rounded-md py-2 px-3 leading-tight border outline-none outline border-slate-300  w-full"
+                class: "w-10/12 appearance-none inline-flex bg-slate-100 focus:bg-white text-slate-700 rounded-md p-2 leading-tight border outline-none outline border-slate-300"
                 }
               %>
               <%= f.hidden_field :business_asset_id, value: @business_asset.id %>
               <%= f.hidden_field :page, value: 'Asset' %>
-              <%= f.submit("Add employee", class: "inline-flex flex-grow-0 items-center text-sm font-bold leading-none fill-current whitespace-nowrap transition duration-100 rounded-lg shadow-xl transform transition duration-100 active:translate-x-px active:translate-y-px cursor-pointer disabled:cursor-not-allowed  bg-white border hover:border-green-700 border-green-600 text-green-600 hover:text-green-700 disabled:border-gray-300 disabled:text-gray-600 p-4") %>
+              <%= f.submit("Add employee", class: "justify-self-end items-center text-sm font-bold leading-none fill-current whitespace-nowrap transition duration-100 rounded-lg transform transition duration-100 cursor-pointer bg-white border hover:border-slate-700 border-slate-600 text-slate-600 hover:text-slate-700 p-3") %>
             <% end %>
           </h1>
         </div>
