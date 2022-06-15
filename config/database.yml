@@ -1,12 +1,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: asset_manager
-  password: asset_manager
+  username: ubuntu
+  password: password
   timeout: 5000
 
 development:
   <<: *default
   database: assets_dev
-  username: asset_manager
-  password: asset_manager
+  username: ubuntu
+  password: password
